@@ -1,7 +1,6 @@
 # GeoSwap — reproduction package
 
-**Two coupled models for two-dimensional irregular strip packing:
-genetic-algorithm quality in a third of the evaluations**
+**Learning both decisions of a genetic algorithm for irregular strip packing**
 Cunmeng Chen, Dayong Cao — Harbin University of Science and Technology
 
 This package contains the code, the instance sets, the two trained checkpoints and the
