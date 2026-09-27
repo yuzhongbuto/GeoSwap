@@ -4,14 +4,14 @@
 输出 {basename: [order...]} json，支持断点续跑（已完成实例跳过）。
 
 用法:
-  本机:  python ranksteer/gen_labels_subset.py --sizes 055,060 --range 0:210 \
-             --workers 8 --iters 15 --out ranksteer/results/labels_5560_local.json
-  服务器: python3 ranksteer/gen_labels_subset.py --sizes 055,060 --range 210:240 \
-             --workers 2 --iters 15 --out ranksteer/results/labels_5560_server.json
+  分片 A: python code/train_first_model/gen_labels_subset.py --sizes 055,060 --range 0:210 \
+             --workers 8 --iters 15 --out labels_5560_a.json
+  分片 B: python code/train_first_model/gen_labels_subset.py --sizes 055,060 --range 210:240 \
+             --workers 2 --iters 15 --out labels_5560_b.json
 
 完成后合并:
-  python ranksteer/gen_labels_subset.py --merge labels_5560_local.json,labels_5560_server.json
-  → 写入 ranksteer/results/labels_v2.json（与既有 380 个合并）
+  python code/train_first_model/gen_labels_subset.py --merge labels_5560_a.json,labels_5560_b.json
+  → 写入 data/labels_v2.json（与既有 380 个合并）
 """
 import os, sys, json, time, argparse
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
